@@ -89,17 +89,20 @@ const Home = () => {
 
   return (
 
-    <section className="min-h-screen bg-black text-white flex items-center justify-center px-6">
+    <section
+      id="home"
+      className="min-h-screen bg-black text-white flex items-center justify-center px-4 sm:px-6 lg:px-10 py-20"
+    >
 
-      <div className="max-w-7xl w-full grid md:grid-cols-2 gap-10 items-center">
+      <div className="max-w-7xl w-full grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
 
         {/* LEFT CONTENT */}
-        <div>
+        <div className="text-center md:text-left">
 
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            className="text-purple-400 text-lg mb-2"
+            className="text-purple-400 text-base sm:text-lg mb-2"
           >
             Hello, I'm
           </motion.p>
@@ -107,14 +110,14 @@ const Home = () => {
           <motion.h1
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-purple-400 via-pink-500 to-blue-400 bg-clip-text text-transparent"
+            className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-purple-400 via-pink-500 to-blue-400 bg-clip-text text-transparent"
           >
             Atul Yadav
           </motion.h1>
 
           {/* ROLE TEXT */}
           <motion.h2
-            className="text-2xl md:text-3xl mt-4 text-gray-300 min-h-[40px]"
+            className="text-xl sm:text-2xl md:text-3xl mt-4 text-gray-300 min-h-[40px]"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
           >
@@ -124,7 +127,7 @@ const Home = () => {
 
           {/* DESCRIPTION TEXT */}
           <motion.p
-            className="mt-6 text-gray-400 max-w-lg min-h-[70px]"
+            className="mt-6 text-gray-400 max-w-xl mx-auto md:mx-0 text-sm sm:text-base min-h-[70px]"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
           >
@@ -133,7 +136,7 @@ const Home = () => {
           </motion.p>
 
           {/* BUTTONS */}
-          <div className="flex gap-4 mt-8">
+          <div className="flex flex-col sm:flex-row gap-4 mt-8 justify-center md:justify-start">
 
             <motion.button
               whileHover={{ scale: 1.1 }}
@@ -167,13 +170,13 @@ const Home = () => {
 
           <div className="relative">
 
-            {/* Glow Effect */}
+            {/* Glow */}
             <div className="absolute inset-0 bg-purple-600 blur-3xl opacity-30 rounded-full"></div>
 
             <img
               src={atul}
               alt="Atul Yadav"
-              className="relative w-72 h-72 md:w-96 md:h-96 object-cover rounded-full border-4 border-purple-500 shadow-xl"
+              className="relative w-52 h-52 sm:w-64 sm:h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 object-cover rounded-full border-4 border-purple-500 shadow-xl"
             />
 
           </div>

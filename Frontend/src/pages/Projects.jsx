@@ -34,17 +34,19 @@ const projects = [
 
 const Projects = () => {
   return (
-    <section id="projects" className="bg-black text-white py-24 px-6">
-
+    <section
+      id="projects"
+      className="bg-black text-white py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-10"
+    >
       <div className="max-w-7xl mx-auto">
 
         {/* Title */}
-        <h1 className="text-4xl md:text-5xl font-bold text-center mb-16">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-12 sm:mb-16">
           My <span className="text-purple-500">Projects</span>
         </h1>
 
         {/* Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-10">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-10">
 
           {projects.map((project, index) => (
 
@@ -52,37 +54,38 @@ const Projects = () => {
               key={index}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
               whileHover={{ scale: 1.05 }}
               transition={{ duration: 0.5 }}
               className="bg-gray-900 rounded-xl overflow-hidden shadow-lg"
             >
 
-              {/* Screenshot */}
+              {/* Image */}
               <img
                 src={project.img}
                 alt={project.name}
-                className="w-full h-52 object-cover"
+                className="w-full h-44 sm:h-48 md:h-52 object-cover"
               />
 
               {/* Content */}
-              <div className="p-6">
+              <div className="p-5 sm:p-6">
 
-                <h2 className="text-2xl font-semibold mb-3">
+                <h2 className="text-xl sm:text-2xl font-semibold mb-3">
                   {project.name}
                 </h2>
 
-                <p className="text-gray-400 text-sm mb-5">
+                <p className="text-gray-400 text-sm sm:text-base mb-5">
                   {project.desc}
                 </p>
 
                 {/* Buttons */}
-                <div className="flex gap-4">
+                <div className="flex flex-col sm:flex-row gap-3">
 
                   <a
                     href={project.code}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-4 py-2 border border-purple-500 text-purple-400 rounded-lg hover:bg-purple-500 hover:text-white transition"
+                    className="text-center px-4 py-2 border border-purple-500 text-purple-400 rounded-lg hover:bg-purple-500 hover:text-white transition"
                   >
                     Show Code
                   </a>
@@ -91,7 +94,7 @@ const Projects = () => {
                     href={project.live}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="px-4 py-2 bg-purple-600 rounded-lg hover:bg-purple-700 transition"
+                    className="text-center px-4 py-2 bg-purple-600 rounded-lg hover:bg-purple-700 transition"
                   >
                     Live Preview
                   </a>
@@ -107,7 +110,6 @@ const Projects = () => {
         </div>
 
       </div>
-
     </section>
   );
 };

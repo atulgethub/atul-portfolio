@@ -12,16 +12,16 @@ const Contact = () => {
 
     emailjs
       .sendForm(
-        "service_639",   // SERVICE ID
-        "template_4g958hc",  // TEMPLATE ID
+        "service_639",
+        "template_4g958hc",
         form.current,
-        "VQgTR-4N8XV2tmUVr"        // PUBLIC KEY
+        "VQgTR-4N8XV2tmUVr"
       )
       .then(
         () => {
           alert("Message Sent Successfully ✅");
         },
-        (error) => {
+        () => {
           alert("Failed to send ❌");
         }
       );
@@ -30,50 +30,65 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="bg-black text-white py-24 px-6">
+    <section id="contact" className="bg-black text-white py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-10">
 
       <div className="max-w-7xl mx-auto">
 
+        {/* Title */}
         <motion.h1
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
-          className="text-4xl md:text-5xl font-bold text-center mb-6"
+          viewport={{ once: true }}
+          className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-4"
         >
           Contact <span className="text-purple-500">Me</span>
         </motion.h1>
 
-        <p className="text-gray-400 text-center mb-16">
+        <p className="text-gray-400 text-center mb-12 sm:mb-16">
           I would love to hear from you.
         </p>
 
-        <div className="grid md:grid-cols-2 gap-12 bg-gray-900 p-12 rounded-xl">
+        {/* Contact Container */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-10 bg-gray-900 p-6 sm:p-8 lg:p-12 rounded-xl">
 
           {/* LEFT SIDE */}
-          <div className="space-y-6 text-lg">
+          <div className="space-y-6 text-base sm:text-lg">
 
             <div className="flex items-center gap-4">
-              <FaPhone className="text-purple-500" />
-              <span className="text-gray-300">+91 6392754984</span>
+              <FaPhone className="text-purple-500 text-xl" />
+              <span className="text-gray-300 break-all">
+                +91 6392754984
+              </span>
             </div>
 
             <div className="flex items-center gap-4">
-              <FaEnvelope className="text-purple-500" />
-              <span className="text-gray-300">
+              <FaEnvelope className="text-purple-500 text-xl" />
+              <span className="text-gray-300 break-all">
                 atulyadav06390639@gmail.com
               </span>
             </div>
 
             <div className="flex items-center gap-4">
-              <FaGithub className="text-purple-500" />
-              <a href="https://github.com/atulgethub" target="_blank">
-                github
+              <FaGithub className="text-purple-500 text-xl" />
+              <a
+                href="https://github.com/atulgethub"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-300 hover:text-purple-400 transition"
+              >
+                github.com/atulgethub
               </a>
             </div>
 
             <div className="flex items-center gap-4">
-              <FaLinkedin className="text-purple-500" />
-              <a href="https://linkedin.com" target="_blank">
-                linkedin
+              <FaLinkedin className="text-purple-500 text-xl" />
+              <a
+                href="https://linkedin.com"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-300 hover:text-purple-400 transition"
+              >
+                linkedin.com
               </a>
             </div>
 
@@ -85,6 +100,7 @@ const Contact = () => {
             onSubmit={sendEmail}
             initial={{ opacity: 0, x: 40 }}
             whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
             className="space-y-5"
           >
 
@@ -93,7 +109,7 @@ const Contact = () => {
               name="user_name"
               placeholder="Full name"
               required
-              className="w-full bg-black border border-gray-700 p-3 rounded-lg"
+              className="w-full bg-black border border-gray-700 p-3 sm:p-4 rounded-lg focus:outline-none focus:border-purple-500"
             />
 
             <input
@@ -101,7 +117,7 @@ const Contact = () => {
               name="user_email"
               placeholder="Email address"
               required
-              className="w-full bg-black border border-gray-700 p-3 rounded-lg"
+              className="w-full bg-black border border-gray-700 p-3 sm:p-4 rounded-lg focus:outline-none focus:border-purple-500"
             />
 
             <textarea
@@ -109,12 +125,12 @@ const Contact = () => {
               rows="4"
               placeholder="Your message"
               required
-              className="w-full bg-black border border-gray-700 p-3 rounded-lg"
+              className="w-full bg-black border border-gray-700 p-3 sm:p-4 rounded-lg focus:outline-none focus:border-purple-500"
             />
 
             <button
               type="submit"
-              className="px-8 py-2 bg-purple-600 rounded-full hover:bg-purple-700"
+              className="w-full sm:w-auto px-8 py-3 bg-purple-600 rounded-full hover:bg-purple-700 transition"
             >
               Send Message
             </button>
