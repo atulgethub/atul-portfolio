@@ -10,6 +10,7 @@ const Navbar = () => {
     { name: "About", path: "#about" },
     { name: "Skills", path: "#skills" },
     { name: "Projects", path: "#projects" },
+    { name: "Achievement", path: "#achievement" }, // ✅ added
     { name: "Contact", path: "#contact" }
   ];
 
@@ -55,17 +56,18 @@ const Navbar = () => {
 
         </ul>
 
-        {/* Desktop Button */}
-        <motion.button
+        {/* Desktop Hire Me Button */}
+        <motion.a
+          href="#contact"
           whileHover={{
             scale: 1.1,
             boxShadow: "0px 0px 12px rgba(168,85,247,0.8)"
           }}
           whileTap={{ scale: 0.95 }}
-          className="hidden md:block px-5 py-2 rounded-xl border border-purple-400 text-purple-400 font-semibold hover:bg-purple-500 hover:text-white transition"
+          className="hidden md:block px-5 py-2 rounded-xl border border-purple-400 text-purple-400 font-semibold hover:bg-purple-500 hover:text-white transition text-center"
         >
           Hire Me
-        </motion.button>
+        </motion.a>
 
         {/* Mobile Menu Button */}
         <div
@@ -109,7 +111,9 @@ const Navbar = () => {
           </ul>
 
           <div className="flex justify-center pb-8">
-            <motion.button
+            <motion.a
+              href="#contact"
+              onClick={() => setMenu(false)}
               whileHover={{
                 scale: 1.1,
                 boxShadow: "0px 0px 12px rgba(168,85,247,0.8)"
@@ -118,7 +122,7 @@ const Navbar = () => {
               className="bg-purple-600 px-6 py-3 rounded-lg"
             >
               Hire Me
-            </motion.button>
+            </motion.a>
           </div>
 
         </motion.div>

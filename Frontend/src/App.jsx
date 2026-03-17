@@ -31,7 +31,7 @@ const App = () => {
           <Projects />
         </section>
 
-        <section id="achieve" className="py-10">
+        <section id="achievement" className="py-10">
           <Achievement />
         </section>
 
