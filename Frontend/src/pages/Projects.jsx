@@ -3,32 +3,37 @@ import { motion } from "framer-motion";
 
 const projects = [
   {
+    name: "ForumVerse – Forum Management System",
+    code: "https://github.com/atulgethub/Forum-Management-System",
+    points: [
+      "User & Admin dashboards",
+      "JWT authentication",
+      "CRUD for posts & comments",
+      "Admin moderation tools"
+    ],
+    tech: "React, Node, Express, MongoDB"
+  },
+  {
+    name: "ContentSphere – CMS",
+    code: "https://github.com/atulgethub/Content-Management-System",
+    points: [
+      "Manage website content",
+      "Role-based authentication",
+      "REST API with CRUD",
+      "Optimized frontend-backend flow"
+    ],
+    tech: "React, Node, Express, MongoDB"
+  },
+  {
     name: "Student Management System",
-    desc: "A full stack CRUD application to manage student records with React, Node.js, Express and MongoDB.",
-    img: "/projects/student.png",
-    code: "https://github.com/yourgithub/student-management",
-    live: "https://student-management.vercel.app"
-  },
-  {
-    name: "AI Interview Platform",
-    desc: "A platform where students practice technical interviews with AI generated questions and skill tests.",
-    img: "/projects/interview.png",
-    code: "https://github.com/yourgithub/ai-interview",
-    live: "https://ai-interview.vercel.app"
-  },
-  {
-    name: "Tutorial Website",
-    desc: "A learning platform where students can access programming tutorials, notes and practice tests.",
-    img: "/projects/tutorial.png",
-    code: "https://github.com/yourgithub/tutorial-site",
-    live: "https://tutorial-site.vercel.app"
-  },
-  {
-    name: "Ecommerce T-Shirt Store",
-    desc: "An ecommerce website where users can buy custom designed T-shirts and hoodies online.",
-    img: "/projects/store.png",
-    code: "https://github.com/yourgithub/tshirt-store",
-    live: "https://tshirt-store.vercel.app"
+    code: "https://github.com/atulgethub/student-management-system",
+    points: [
+      "Manage student records",
+      "Add, update, delete students",
+      "REST API integration",
+      "Responsive admin dashboard"
+    ],
+    tech: "React, Node, Express, MongoDB"
   }
 ];
 
@@ -36,72 +41,55 @@ const Projects = () => {
   return (
     <section
       id="projects"
-      className="bg-black text-white py-16 sm:py-20 lg:py-24 px-4 sm:px-6 lg:px-10"
+      className="bg-black text-white py-16 px-4"
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-6xl mx-auto">
 
         {/* Title */}
-        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-12 sm:mb-16">
+        <h1 className="text-3xl md:text-4xl font-bold text-center mb-12">
           My <span className="text-purple-500">Projects</span>
         </h1>
 
         {/* Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 lg:gap-10">
+        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
 
           {projects.map((project, index) => (
 
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 40 }}
+              initial={{ opacity: 0, y: 25 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              whileHover={{ scale: 1.05 }}
-              transition={{ duration: 0.5 }}
-              className="bg-gray-900 rounded-xl overflow-hidden shadow-lg"
+              whileHover={{ scale: 1.04 }}
+              transition={{ duration: 0.4 }}
+              className="bg-gray-900 p-5 rounded-lg shadow-md"
             >
 
-              {/* Image */}
-              <img
-                src={project.img}
-                alt={project.name}
-                className="w-full h-44 sm:h-48 md:h-52 object-cover"
-              />
+              {/* Title */}
+              <h2 className="text-lg font-semibold text-purple-400 mb-3">
+                {project.name}
+              </h2>
 
-              {/* Content */}
-              <div className="p-5 sm:p-6">
+              {/* Points */}
+              <ul className="text-gray-300 text-sm space-y-1 mb-4 list-disc list-inside">
+                {project.points.map((point, i) => (
+                  <li key={i}>{point}</li>
+                ))}
+              </ul>
 
-                <h2 className="text-xl sm:text-2xl font-semibold mb-3">
-                  {project.name}
-                </h2>
+              {/* Tech */}
+              <p className="text-xs text-gray-400 mb-4">
+                <span className="text-white font-medium">Tech:</span> {project.tech}
+              </p>
 
-                <p className="text-gray-400 text-sm sm:text-base mb-5">
-                  {project.desc}
-                </p>
-
-                {/* Buttons */}
-                <div className="flex flex-col sm:flex-row gap-3">
-
-                  <a
-                    href={project.code}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-center px-4 py-2 border border-purple-500 text-purple-400 rounded-lg hover:bg-purple-500 hover:text-white transition"
-                  >
-                    Show Code
-                  </a>
-
-                  <a
-                    href={project.live}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-center px-4 py-2 bg-purple-600 rounded-lg hover:bg-purple-700 transition"
-                  >
-                    Live Preview
-                  </a>
-
-                </div>
-
-              </div>
+              {/* Button */}
+              <a
+                href={project.code}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block text-center text-sm border border-purple-500 text-purple-400 py-2 rounded-md hover:bg-purple-500 hover:text-white transition"
+              >
+                View Code
+              </a>
 
             </motion.div>
 
