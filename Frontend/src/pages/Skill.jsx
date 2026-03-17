@@ -41,9 +41,12 @@ const skills = [
 
 const Skills = () => {
   return (
-    <section className="bg-black text-white py-20 px-4 sm:px-6 lg:px-8">
+    <section className="relative bg-black text-white py-20 px-4 sm:px-6 lg:px-8 overflow-hidden">
 
-      <div className="max-w-7xl mx-auto">
+      {/* Background Glow */}
+      <div className="absolute top-0 left-0 w-full h-full bg-gradient-to-br from-purple-900/20 via-transparent to-blue-900/20 blur-3xl"></div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
 
         {/* Title */}
         <motion.h1
@@ -52,32 +55,40 @@ const Skills = () => {
           transition={{ duration: 0.6 }}
           className="text-3xl sm:text-4xl md:text-5xl font-bold text-center mb-16"
         >
-          My <span className="text-purple-500">Skills</span>
+          My <span className="bg-gradient-to-r from-purple-400 to-pink-500 bg-clip-text text-transparent">Skills</span>
         </motion.h1>
 
-        {/* Skills Grid */}
+        {/* Grid */}
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-6 sm:gap-8">
 
           {skills.map((skill, index) => (
 
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
+              initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ scale: 1.1 }}
+              whileHover={{ scale: 1.1, rotate: 2 }}
               transition={{ delay: index * 0.05 }}
-              className="group bg-gray-900 rounded-xl p-6 flex flex-col items-center justify-center shadow-lg hover:shadow-purple-500/40 hover:bg-gray-800 transition duration-300"
+              className="relative group"
             >
 
-              {/* Icon */}
-              <div className="text-4xl text-purple-400 group-hover:text-purple-500 mb-3 transition">
-                {skill.icon}
-              </div>
+              {/* Gradient Border */}
+              <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl blur opacity-20 group-hover:opacity-60 transition"></div>
 
-              {/* Skill Name */}
-              <p className="text-sm sm:text-base font-medium">
-                {skill.name}
-              </p>
+              {/* Card */}
+              <div className="relative bg-gray-900/80 backdrop-blur-md border border-gray-800 rounded-xl p-6 flex flex-col items-center justify-center shadow-lg group-hover:shadow-purple-500/30 transition">
+
+                {/* Icon */}
+                <div className="text-4xl text-purple-400 group-hover:text-pink-400 mb-3 transition duration-300">
+                  {skill.icon}
+                </div>
+
+                {/* Name */}
+                <p className="text-sm sm:text-base font-medium tracking-wide">
+                  {skill.name}
+                </p>
+
+              </div>
 
             </motion.div>
 

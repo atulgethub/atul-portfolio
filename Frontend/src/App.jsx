@@ -5,6 +5,7 @@ import About from "./pages/About";
 import Skills from "./pages/Skill";
 import Projects from "./pages/Projects";
 import Contact from "./pages/Contact";
+import Achievement from "./pages/Achievement";
 
 const App = () => {
   return (
@@ -28,6 +29,10 @@ const App = () => {
 
         <section id="projects" className="py-10">
           <Projects />
+        </section>
+
+        <section id="achieve" className="py-10">
+          <Achievement />
         </section>
 
         <section id="contact" className="py-10">
