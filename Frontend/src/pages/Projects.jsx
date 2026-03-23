@@ -2,9 +2,15 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FaGithub } from "react-icons/fa";
 
+// ✅ Import Images
+import forumImg from "../assets/forumverse.png";
+import cmsImg from "../assets/cms.png";
+import studentImg from "../assets/student.png";
+
 const projects = [
   {
     name: "ForumVerse – Forum Management System",
+    image: forumImg,
     code: "https://github.com/atulgethub/Forum-Management-System",
     points: [
       "User & Admin dashboards",
@@ -16,6 +22,7 @@ const projects = [
   },
   {
     name: "ContentSphere – CMS",
+    image: cmsImg,
     code: "https://github.com/atulgethub/Content-Management-System",
     points: [
       "Manage website content",
@@ -27,6 +34,7 @@ const projects = [
   },
   {
     name: "Student Management System",
+    image: studentImg,
     code: "https://github.com/atulgethub/student-management-system",
     points: [
       "Manage student records",
@@ -65,47 +73,56 @@ const Projects = () => {
               className="relative group"
             >
 
-              {/* Glow Border */}
+              {/* Glow */}
               <div className="absolute inset-0 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl blur opacity-20 group-hover:opacity-40 transition"></div>
 
               {/* Card */}
-              <div className="relative bg-gray-900 rounded-xl p-6 border border-gray-800 shadow-lg">
+              <div className="relative bg-gray-900 rounded-xl overflow-hidden border border-gray-800 shadow-lg">
 
-                {/* Project Title */}
-                <h2 className="text-xl font-semibold text-purple-400 mb-3">
-                  {project.name}
-                </h2>
-
-                {/* Points */}
-                <ul className="text-gray-300 text-sm space-y-2 mb-5 list-disc list-inside">
-                  {project.points.map((point, i) => (
-                    <li key={i}>{point}</li>
-                  ))}
-                </ul>
-
-                {/* Tech Stack */}
-                <div className="flex flex-wrap gap-2 mb-5">
-                  {project.tech.map((tech, i) => (
-                    <span
-                      key={i}
-                      className="text-xs bg-purple-600/20 text-purple-300 px-2 py-1 rounded"
-                    >
-                      {tech}
-                    </span>
-                  ))}
+                {/* Image */}
+                <div className="overflow-hidden">
+                  <img
+                    src={project.image}
+                    alt={project.name}
+                    className="w-full h-48 object-cover group-hover:scale-110 transition duration-500"
+                  />
                 </div>
 
-                {/* Button */}
-                <a
-                  href={project.code}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center gap-2 text-sm border border-purple-500 text-purple-400 py-2 rounded-lg hover:bg-purple-600 hover:text-white transition"
-                >
-                  <FaGithub />
-                  View Code
-                </a>
+                {/* Content */}
+                <div className="p-6">
 
+                  <h2 className="text-xl font-semibold text-purple-400 mb-3">
+                    {project.name}
+                  </h2>
+
+                  <ul className="text-gray-300 text-sm space-y-2 mb-5 list-disc list-inside">
+                    {project.points.map((point, i) => (
+                      <li key={i}>{point}</li>
+                    ))}
+                  </ul>
+
+                  <div className="flex flex-wrap gap-2 mb-5">
+                    {project.tech.map((tech, i) => (
+                      <span
+                        key={i}
+                        className="text-xs bg-purple-600/20 text-purple-300 px-2 py-1 rounded"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
+
+                  <a
+                    href={project.code}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center justify-center gap-2 text-sm border border-purple-500 text-purple-400 py-2 rounded-lg hover:bg-purple-600 hover:text-white transition"
+                  >
+                    <FaGithub />
+                    View Code
+                  </a>
+
+                </div>
               </div>
 
             </motion.div>
