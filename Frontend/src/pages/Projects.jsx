@@ -1,5 +1,5 @@
-import React from "react";
-import { motion } from "framer-motion";
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import { FaGithub } from "react-icons/fa";
 
 // ✅ Import Images
@@ -47,6 +47,8 @@ const projects = [
 ];
 
 const Projects = () => {
+  const [selected, setSelected] = useState(null);
+
   return (
     <section
       id="projects"
@@ -84,7 +86,8 @@ const Projects = () => {
                   <img
                     src={project.image}
                     alt={project.name}
-                    className="w-full h-48 object-cover group-hover:scale-110 transition duration-500"
+                    onClick={() => setSelected(project)}
+                    className="w-full h-48 object-cover group-hover:scale-110 transition duration-500 cursor-pointer"
                   />
                 </div>
 
@@ -130,8 +133,95 @@ const Projects = () => {
           ))}
 
         </div>
-
       </div>
+
+      {/* 🔥 MODAL */}
+      <AnimatePresence>
+        {selected && (
+          <motion.div
+            onClick={() => setSelected(null)} // ✅ click outside to close
+            className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 px-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+
+            {/* Prevent closing when clicking inside */}
+            <motion.div
+              onClick={(e) => e.stopPropagation()}
+              initial={{ scale: 0.7 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.7 }}
+              className="bg-gray-900 p-6 rounded-xl max-w-3xl w-full relative max-h-[90vh] overflow-y-auto"
+            >
+
+              {/* ❌ Close Icon */}
+              <button
+                onClick={() => setSelected(null)}
+                className="absolute top-3 right-3 text-gray-400 hover:text-white text-lg"
+              >
+                ✕
+              </button>
+
+              {/* Title */}
+              <h2 className="text-xl font-semibold text-purple-400 mb-4">
+                {selected.name}
+              </h2>
+
+              {/* ✅ Fixed Image (Responsive) */}
+              <img
+                src={selected.image}
+                alt={selected.name}
+                className="w-full max-h-[400px] object-contain rounded-lg mb-4"
+              />
+
+              {/* Points */}
+              <ul className="text-gray-300 text-sm space-y-2 list-disc list-inside mb-4">
+                {selected.points.map((point, i) => (
+                  <li key={i}>{point}</li>
+                ))}
+              </ul>
+
+              {/* Tech */}
+              <div className="flex flex-wrap gap-2 mb-4">
+                {selected.tech.map((tech, i) => (
+                  <span
+                    key={i}
+                    className="text-xs bg-purple-600/20 text-purple-300 px-2 py-1 rounded"
+                  >
+                    {tech}
+                  </span>
+                ))}
+              </div>
+
+              {/* Buttons */}
+              <div className="flex gap-4">
+
+                {/* GitHub */}
+                <a
+                  href={selected.code}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 text-center py-2 border border-purple-500 text-purple-400 rounded-lg hover:bg-purple-600 hover:text-white transition"
+                >
+                  View Code
+                </a>
+
+                {/* Cancel */}
+                <button
+                  onClick={() => setSelected(null)}
+                  className="flex-1 py-2 bg-gray-700 rounded-lg hover:bg-gray-600 transition"
+                >
+                  Cancel
+                </button>
+
+              </div>
+
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
     </section>
   );
 };
