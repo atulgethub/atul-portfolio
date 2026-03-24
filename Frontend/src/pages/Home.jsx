@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import atul from "../assets/Atulp.jpeg";
 import cv from "../assets/12315040_CV.pdf";
@@ -21,6 +21,8 @@ const Home = () => {
   const [descText, setDescText] = useState("");
   const [descIndex, setDescIndex] = useState(0);
   const [descDeleting, setDescDeleting] = useState(false);
+
+  const [showCV, setShowCV] = useState(false); // ✅ CV Modal
 
   /* Role typing */
   useEffect(() => {
@@ -116,6 +118,7 @@ const Home = () => {
               Hire Me
             </motion.button>
 
+            {/* Download */}
             <a href={cv} download>
               <motion.button
                 whileHover={{ scale: 1.08 }}
@@ -125,6 +128,16 @@ const Home = () => {
                 Download CV
               </motion.button>
             </a>
+
+            {/* ✅ Preview CV */}
+            <motion.button
+              onClick={() => setShowCV(true)}
+              whileHover={{ scale: 1.08 }}
+              whileTap={{ scale: 0.95 }}
+              className="px-6 py-3 bg-gray-800 border border-purple-500 rounded-xl hover:bg-purple-500 hover:text-white transition"
+            >
+              Preview CV
+            </motion.button>
 
           </div>
 
@@ -148,10 +161,8 @@ const Home = () => {
         >
           <div className="relative">
 
-            {/* Glow Ring */}
             <div className="absolute inset-0 rounded-full border-4 border-purple-500 animate-pulse blur-sm"></div>
 
-            {/* Image */}
             <img
               src={atul}
               alt="Atul"
@@ -162,6 +173,66 @@ const Home = () => {
         </motion.div>
 
       </div>
+
+      {/* 🔥 CV MODAL */}
+      <AnimatePresence>
+        {showCV && (
+          <motion.div
+            onClick={() => setShowCV(false)}
+            className="fixed inset-0 bg-black/80 flex items-center justify-center z-50 px-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+          >
+
+            <motion.div
+              onClick={(e) => e.stopPropagation()}
+              initial={{ scale: 0.7 }}
+              animate={{ scale: 1 }}
+              exit={{ scale: 0.7 }}
+              className="bg-gray-900 p-4 rounded-xl max-w-4xl w-full relative max-h-[90vh]"
+            >
+
+              {/* Close */}
+              <button
+                onClick={() => setShowCV(false)}
+                className="absolute top-3 right-3 text-gray-400 hover:text-white text-lg"
+              >
+                ✕
+              </button>
+
+              {/* PDF Preview */}
+              <iframe
+                src={cv}
+                title="CV Preview"
+                className="w-full h-[70vh] rounded-lg mb-4"
+              ></iframe>
+
+              {/* Buttons */}
+              <div className="flex gap-4">
+
+                <a
+                  href={cv}
+                  download
+                  className="flex-1 text-center py-2 border border-purple-500 text-purple-400 rounded-lg hover:bg-purple-600 hover:text-white transition"
+                >
+                  Download
+                </a>
+
+                <button
+                  onClick={() => setShowCV(false)}
+                  className="flex-1 py-2 bg-gray-700 rounded-lg hover:bg-gray-600 transition"
+                >
+                  Cancel
+                </button>
+
+              </div>
+
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+
     </section>
   );
 };
