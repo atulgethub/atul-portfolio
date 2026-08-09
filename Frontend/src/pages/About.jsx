@@ -67,7 +67,7 @@ const About = () => {
               Lovely Professional University
             </p>
             <p className="text-gray-500 text-sm">2023 - Present</p>
-            <p className="text-purple-400 mt-2">CGPA: 6.62</p>
+            <p className="text-purple-400 mt-2">CGPA: 7.00</p>
           </motion.div>
 
           {/* Intermediate */}

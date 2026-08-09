@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaGithub, FaLinkedin } from "react-icons/fa";
 import atul from "../assets/Atulp.jpeg";
-import cv from "../assets/12315040_CV.pdf";
+import cv from "../assets/12315040_CV14.pdf";
 
 const Home = () => {
 
